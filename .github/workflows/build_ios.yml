@@ -5,14 +5,15 @@ on:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: macos-12
+
 
     steps:
     - name: Checkout source
       uses: actions/checkout@v2
 
     - name: Set up Flutter
-      uses: subosito/flutter-action@v1
+      uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.19.0'
 
@@ -29,7 +30,7 @@ jobs:
         cd build_output && zip -r Runner.zip Runner.app
 
     - name: Upload Artifact
-      uses: actions/upload-artifact@v2.2.4
+      uses: actions/upload-artifact@v3
       with:
         name: iOS-App
         path: build_output/Runner.zip
